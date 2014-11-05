@@ -2,6 +2,7 @@ package main
 
 import (
 	"strings"
+	"time"
 )
 
 const (
@@ -36,6 +37,31 @@ const (
 	FormatNumColonTZ            = "-07:00" // always numeric
 	FormatNumColonSecondsTZ     = "-07:00:00"
 )
+
+var PhpFormatMap = map[string]string{
+	"d": FormatZeroDay,
+	"D": FormatWeekDay,
+	"j": FormatDay,
+	"l": FormatLongWeekDay,
+	"F": FormatLongMonth,
+	"m": FormatZeroMonth,
+	"M": FormatMonth,
+	"n": FormatNumMonth,
+	"Y": FormatLongYear,
+	"y": FormatYear,
+	"a": Formatpm,
+	"A": FormatPM,
+	"g": FormatHour12,
+	"G": FormatHour,
+	"h": FormatZeroHour12,
+	"i": FormatZeroMinute,
+	"s": FormatZeroSecond,
+	"O": FormatNumTZ,
+	"P": FormatNumColonTZ,
+	"T": FormatTZ,
+	"c": time.RFC3339,
+	"r": time.RFC1123Z,
+}
 
 func ConvertFromPhp(s string) string {
 	for phpString, goStrig := range PhpFormatMap {
