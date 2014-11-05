@@ -1,5 +1,9 @@
 package main
 
+import (
+	"strings"
+)
+
 const (
 	FormatLongMonth             = "January"
 	FormatMonth                 = "Jan"
@@ -32,3 +36,10 @@ const (
 	FormatNumColonTZ            = "-07:00" // always numeric
 	FormatNumColonSecondsTZ     = "-07:00:00"
 )
+
+func ConvertFromPhp(s string) string {
+	for phpString, goStrig := range PhpFormatMap {
+		s = strings.Replace(s, phpString, goStrig, -1)
+	}
+	return s
+}
